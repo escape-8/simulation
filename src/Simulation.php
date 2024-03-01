@@ -1,6 +1,7 @@
 <?php
 
 namespace Simulation;
+
 class Simulation
 {
     private Map $map;
@@ -18,9 +19,9 @@ class Simulation
     {
         return $this->map;
     }
+
     public function nextTurn()
     {
-
     }
 
     public function startSimulation(): void
@@ -31,6 +32,5 @@ class Simulation
 
     public function pauseSimulation()
     {
-
     }
 }
