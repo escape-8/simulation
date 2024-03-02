@@ -17,9 +17,10 @@ class Simulation
         $this->countMovies = 0;
     }
 
-    public function getMap(): Map
+    public function nextTurn(): void
     {
-        return $this->map;
+        $this->actions->turnActions($this->map);
+        $this->renderer->render($this->map);
     }
 
     public function nextTurn()
