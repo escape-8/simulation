@@ -33,7 +33,14 @@ class Simulation
         $this->renderer->render($this->map);
     }
 
-    public function pauseSimulation()
+    public function getMovies(): int
     {
+        return $this->countMovies;
     }
+
+    public function increaseMovies(): void
+    {
+        $this->countMovies++;
+    }
+
 }
