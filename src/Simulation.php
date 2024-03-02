@@ -6,12 +6,14 @@ class Simulation
 {
     private Map $map;
     private ConsoleMapRenderer $renderer;
+    private Actions $actions;
     private int $countMovies;
 
-    public function __construct(Map $map, ConsoleMapRenderer $renderer)
+    public function __construct(Map $map, ConsoleMapRenderer $renderer, Actions $actions)
     {
         $this->map = $map;
         $this->renderer = $renderer;
+        $this->actions = $actions;
         $this->countMovies = 0;
     }
 
