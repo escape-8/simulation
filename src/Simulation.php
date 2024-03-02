@@ -23,14 +23,14 @@ class Simulation
         $this->renderer->render($this->map);
     }
 
-    public function nextTurn()
-    {
-    }
-
     public function startSimulation(): void
     {
-        $this->map->setupStartPositions();
+        $this->actions->initActions($this->map);
         $this->renderer->render($this->map);
+    }
+
+    public function pauseSimulation(): void
+    {
     }
 
     public function getMovies(): int
