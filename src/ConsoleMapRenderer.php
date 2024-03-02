@@ -10,9 +10,9 @@ class ConsoleMapRenderer
     private const ANSI_RESET_COLOR = "\u{001B}[0m";
     public function render(Map $map): void
     {
-        for ($positionY = 0; $positionY < Map::$height; $positionY++) {
+        for ($positionY = Map::$height; $positionY > 0; $positionY--) {
             $line = [];
-            for ($positionX = 0; $positionX < Map::$width; $positionX++) {
+            for ($positionX = Map::$width; $positionX > 0; $positionX--) {
                 if ($map->haveEntityOnPosition($positionX, $positionY)) {
                     $line[] = $map->getEntity($positionX, $positionY);
                 } else {
