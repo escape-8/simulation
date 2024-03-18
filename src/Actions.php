@@ -46,11 +46,16 @@ class Actions
         $renderer->render($map);
     }
 
-            if ($element > 10) {
-                [$x, $y] = $map->generatePosition();
-                $map->setEntity(new Coordinates($x, $y), new Herbivore(5, 5, new Coordinates($x, $y)));
-            }
+    public function generateStartRandomPosition(Map $map): Coordinates
+    {
+        $x = random_int($map::MIN_COORDINATE, $map->getWidth());
+        $y = random_int($map::MIN_COORDINATE, $map->getHeight());
+
+        if ($map->haveEntityOnPosition(new Coordinates($x, $y))) {
+            return $this->generateStartRandomPosition($map);
         }
+
+        return new Coordinates($x, $y);
     }
 
     public function turnActions(Map $map): void
