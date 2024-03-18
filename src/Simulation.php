@@ -19,8 +19,7 @@ class Simulation
 
     public function nextTurn(): void
     {
-        $this->actions->turnActions($this->map);
-        $this->renderer->render($this->map);
+        $this->actions->turnActions($this->map, $this->renderer);
     }
 
     public function startSimulation(): void
