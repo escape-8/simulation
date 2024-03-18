@@ -58,13 +58,16 @@ class Actions
         return new Coordinates($x, $y);
     }
 
-    public function turnActions(Map $map): void
+    private function conversionPercentEntitiesToNumbers(array $countEntitiesOnMapInPercent, Map $map): array
     {
-        $predators = $map->getEntitiesByType(Predator::class);
-        foreach ($predators as $coordinates => $predator) {
-            $predator->makeMovie();
-            $map->removePosition($coordinates);
-            $map->setEntity($predator->getCoordinates(), $predator);
+        $result = [];
+        $countCells = $map->getHeight() * $map->getWidth();
+        $percentDelimiter = 100;
+
+        foreach ($countEntitiesOnMapInPercent as $entity => $percent) {
+            $result[$entity] = round(($percent * $countCells) / $percentDelimiter);
         }
+
+        return $result;
     }
 }
