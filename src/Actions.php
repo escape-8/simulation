@@ -2,6 +2,8 @@
 
 namespace Simulation;
 
+use Simulation\Pathfind\EnvironmentEvaluations;
+
 class Actions
 {
     public function initActions(Map $map): void
