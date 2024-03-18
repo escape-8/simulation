@@ -13,6 +13,13 @@ class Coordinates
         $this->coordY = $coordY;
     }
 
+    public function shiftCoordinates(ShiftCoordinate $shift): Coordinates
+    {
+        $x = $this->getCoordX() + $shift->getMoveX();
+        $y = $this->getCoordY() + $shift->getMoveY();
+        return new Coordinates($x, $y);
+    }
+
     public function __toString()
     {
         return $this->coordX . ':' . $this->coordY;
