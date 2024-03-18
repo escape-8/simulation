@@ -25,19 +25,26 @@ class Actions
                 $position = $this->generateStartRandomPosition($map);
                 $map->setEntity($position, $entityFactory->create($entity, $position));
             }
-            if ($element < 17) {
-                [$x, $y] = $map->generatePosition();
-                $map->setEntity(new Coordinates($x, $y), new Rock());
+        }
+    }
+
+    public function turnActions(Map $map, ConsoleMapRenderer $renderer): void
+    {
+        $creatures = $map->getEntitiesByClass(Creature::class);
+        foreach ($creatures as $creature) {
+            if ($creature->getHealthPoints() <= 0) {
+                $map->removePosition($creature->getCoordinates());
+                continue;
             }
-            if ($element < 20) {
-                [$x, $y] = $map->generatePosition();
-                $map->setEntity(new Coordinates($x, $y), new Tree());
+            for ($step = 0; $step < $creature->getSpeed(); $step++) {
+                $map->removePosition($creature->getCoordinates());
+                $coordinate = $creature->makeMovie($map);
+                $map->setEntity($coordinate, $creature);
             }
 
-            if ($element < 11) {
-                [$x, $y] = $map->generatePosition();
-                $map->setEntity(new Coordinates($x, $y), new Grass());
-            }
+        }
+        $renderer->render($map);
+    }
 
             if ($element > 10) {
                 [$x, $y] = $map->generatePosition();
