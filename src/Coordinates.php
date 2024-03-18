@@ -22,7 +22,7 @@ class Coordinates
 
     public function __toString()
     {
-        return $this->coordX . ':' . $this->coordY;
+        return $this->getCoordX() . ':' . $this->getCoordY();
     }
 
 }
