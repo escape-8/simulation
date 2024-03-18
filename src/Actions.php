@@ -8,10 +8,22 @@ class Actions
 {
     public function initActions(Map $map): void
     {
-        for ($element = Map::$width; $element > 0; $element--) {
-            if ($element < 3) {
-                [$x, $y] = $map->generatePosition();
-                $map->setEntity(new Coordinates($x, $y), new Predator(10, 11, new Coordinates($x, $y)));
+        $countEntitiesOnMapInPercent = [
+            Tree::class => 8,
+            Rock::class => 8,
+            Grass::class => 7,
+            Predator::class => 0.4,
+            Herbivore::class => 3,
+        ];
+
+        $numberOfEntities = $this->conversionPercentEntitiesToNumbers($countEntitiesOnMapInPercent, $map);
+
+        $entityFactory = new EntityFactory(new EnvironmentEvaluations());
+
+        foreach ($numberOfEntities as $entity => $count) {
+            for ($num = $count; $num >= 0; $num--) {
+                $position = $this->generateStartRandomPosition($map);
+                $map->setEntity($position, $entityFactory->create($entity, $position));
             }
             if ($element < 17) {
                 [$x, $y] = $map->generatePosition();
