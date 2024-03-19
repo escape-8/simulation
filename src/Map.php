@@ -8,8 +8,17 @@ use Simulation\PathFind\Node;
 
 class Map
 {
-    public static int $width = 20;
-    public static int $height = 10;
+    private const COUNT_ENTITIES_ON_MAP_IN_PERCENT =
+        [
+            Tree::class => 8,
+            Rock::class => 8,
+            Grass::class => 7,
+            Predator::class => 1,
+            Herbivore::class => 5,
+        ];
+    public const MIN_COORDINATE = 1;
+    private int $width;
+    private int $height;
     private array $entities;
 
     public function setEntities(Coordinates $coordinates, Entity $entity): void
