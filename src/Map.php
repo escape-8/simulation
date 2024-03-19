@@ -52,10 +52,10 @@ class Map
         return true;
     }
 
-    public function generatePosition(): array
+    public function getEntity(Coordinates $coordinates): ?Entity
     {
-        $x = random_int(0, self::$width - 1);
-        $y = random_int(0, self::$height - 1);
+        return $this->entities[(string)$coordinates] ?? null;
+    }
 
         if ($this->haveEntityOnPosition($x, $y)) {
             return $this->generatePosition();
