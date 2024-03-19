@@ -118,8 +118,16 @@ class Map
         return $graph;
     }
 
-    public function getEntity($x, $y): Entity
+    public function conversionPercentEntitiesToNumbers(): array
     {
-        return $this->entities["$x:$y"];
+        $result = [];
+        $countCells = $this->getHeight() * $this->getWidth();
+        $percentDelimiter = 100;
+
+        foreach ($this->getCountEntitiesOnMapInPercent() as $entity => $percent) {
+            $result[$entity] = round(($percent * $countCells) / $percentDelimiter);
+        }
+
+        return $result;
     }
 }
