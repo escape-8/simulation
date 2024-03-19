@@ -32,18 +32,10 @@ class Map
         return array_key_exists((string)$coordinates, $this->entities);
     }
 
-            if ($row < 2) {
-                [$x, $y] = $this->generatePosition();
-                $this->setEntities(new Coordinates($x, $y), new Predator(10, 11, new Coordinates($x, $y)));
-            }
-            if ($row < 10) {
-                [$x, $y] = $this->generatePosition();
-                $this->setEntities(new Coordinates($x, $y), new Rock());
-            }
-            if ($row < 23) {
-                [$x, $y] = $this->generatePosition();
-                $this->setEntities(new Coordinates($x, $y), new Tree());
-            }
+    public function filterNotExistsPositions(array $positions): array
+    {
+        return array_filter($positions, fn($position) => $this->isPositionExists($position));
+    }
 
             if ($row < 11) {
                 [$x, $y] = $this->generatePosition();
