@@ -14,4 +14,3 @@ $height = $start->getHeight();
 $simulation = new Simulation(new Map($width, $height), new ConsoleMapRenderer());
 
 $simulation->startSimulation();
-echo "\n";
