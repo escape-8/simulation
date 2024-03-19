@@ -1,6 +1,6 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Actions;
 
 use Simulation\Coordinates;
 use Simulation\Map;
