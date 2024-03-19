@@ -22,6 +22,13 @@ class Map
     private array $entities;
 
 
+    public function __construct(int $width, int $height)
+    {
+        $this->width = $width;
+        $this->height = $height;
+        $this->entities = [];
+    }
+
     public function setEntity(Coordinates $coordinates, Entity $entity): void
     {
         $entity->setCoordinates($coordinates);
