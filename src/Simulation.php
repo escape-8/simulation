@@ -2,30 +2,50 @@
 
 namespace Simulation;
 
+use Simulation\Actions\InitActions;
+use Simulation\Actions\TurnActions;
+
 class Simulation
 {
     private Map $map;
     private ConsoleMapRenderer $renderer;
-    private Actions $actions;
     private int $countMovies;
 
-    public function __construct(Map $map, ConsoleMapRenderer $renderer, Actions $actions)
+    public function __construct(Map $map, ConsoleMapRenderer $renderer)
     {
         $this->map = $map;
         $this->renderer = $renderer;
-        $this->actions = $actions;
         $this->countMovies = 0;
     }
 
     public function nextTurn(): void
     {
-        $this->actions->turnActions($this->map, $this->renderer);
+        $turnAction = new TurnActions();
+        $turnAction->action($this->map);
     }
 
     public function startSimulation(): void
     {
-        $this->actions->initActions($this->map);
-        $this->renderer->render($this->map);
+        if ($this->getMovies() === 0) {
+            system('clear');
+            echo "\n";
+            $initActions = new InitActions();
+            $initActions->action($this->map);
+            $this->increaseMovies();
+            $this->renderer->render($this->map);
+            echo "\n";
+        }
+
+        while(count($this->map->getEntitiesByClass(Herbivore::class)) > 0) {
+            system('clear');
+            echo "\n";
+            echo "Round: " . $this->getMovies() . "\n";
+            $this->nextTurn();
+            $this->increaseMovies();
+            $this->renderer->render($this->map);
+            echo "\n";
+            $this->pauseSimulation();
+        }
     }
 
     public function pauseSimulation(): void
