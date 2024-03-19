@@ -2,6 +2,10 @@
 
 namespace Simulation;
 
+use Simulation\PathFind\Graph;
+use Simulation\PathFind\GraphOffsets;
+use Simulation\PathFind\Node;
+
 class Map
 {
     public static int $width = 20;
@@ -54,9 +58,55 @@ class Map
 
         return [$x, $y];
     }
-    public function haveEntityOnPosition(int $x, int $y): bool
+
+    public function toGraph(array $environmentEvaluations, GraphOffsets $graphOffsets): Graph
     {
-        return isset($this->entities["$x:$y"]);
+        $graph = new Graph();
+        $offsets = $graphOffsets->getOffsets();
+        $coordinateNeighbors = [];
+
+        for ($cellY = $this->getHeight(); $cellY >= self::MIN_COORDINATE; $cellY--) {
+            for ($cellX = self::MIN_COORDINATE; $cellX <= $this->getWidth(); $cellX++) {
+                $position = new Coordinates($cellX, $cellY);
+                $node = new Node($position);
+
+                if ($this->haveEntityOnPosition($position)) {
+                    $entityEvaluation = $environmentEvaluations[$this->getEntity($position)::class];
+                } else {
+                    $entityEvaluation = $environmentEvaluations[$position::class];
+                }
+
+                $node->setCost($entityEvaluation['cost']);
+                $node->setHaveField($entityEvaluation['haveField']);
+
+                if ($entityEvaluation['haveField'] === true) {
+                    $node->setFieldCost($entityEvaluation['fieldCost']);
+                }
+
+                $positionNeighbors = [];
+                foreach ($offsets as $offset) {
+                    $positionNeighbors[] = $position->shiftCoordinates($offset);
+                }
+
+                $coordinateNeighbors[] = [
+                    'node' => $node,
+                    'neighbors' => $this->filterNotExistsPositions($positionNeighbors)
+                ];
+
+                $graph->addNode($node);
+            }
+        }
+
+        foreach ($coordinateNeighbors as ['node' => $node, 'neighbors' => $coordinatesNeighbours]) {
+            foreach ($coordinatesNeighbours as $coordinateNeighbour) {
+                $nodeNeighbour = $graph->getNode($coordinateNeighbour);
+                if ($node->isHaveField()) {
+                    $nodeNeighbour->setCost($nodeNeighbour->getCost() + $node->getFieldCost());
+                }
+                $graph->makeNeighbors($node, $nodeNeighbour);
+            }
+        }
+        return $graph;
     }
 
     public function getEntity($x, $y): Entity
