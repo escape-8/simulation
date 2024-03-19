@@ -57,9 +57,16 @@ class Map
         return $this->entities[(string)$coordinates] ?? null;
     }
 
-        if ($this->haveEntityOnPosition($x, $y)) {
-            return $this->generatePosition();
+    public function getEntitiesByClass(string $class): array
+    {
+        $res = [];
+        foreach ($this->entities as $entity) {
+            if ($entity instanceof $class) {
+                $res[] = $entity;
+            }
         }
+        return $res;
+    }
 
         return [$x, $y];
     }
