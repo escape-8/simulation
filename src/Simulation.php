@@ -30,6 +30,7 @@ class Simulation
 
     public function pauseSimulation(): void
     {
+        sleep(1);
     }
 
     public function getMovies(): int
