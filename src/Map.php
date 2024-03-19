@@ -68,7 +68,9 @@ class Map
         return $res;
     }
 
-        return [$x, $y];
+    public function removePosition(Coordinates $coordinates): void
+    {
+        unset($this->entities[(string)$coordinates]);
     }
 
     public function toGraph(array $environmentEvaluations, GraphOffsets $graphOffsets): Graph
