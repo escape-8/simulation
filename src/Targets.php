@@ -50,12 +50,6 @@ class Targets
         return !empty($this->targets);
     }
 
-    public function removeTarget(int|string $key): Targets
-    {
-        unset($this->targets[$key]);
-        return new Targets($this->map, $this->targets);
-    }
-
     public function shuffleTargets(): Targets
     {
         shuffle($this->targets);
