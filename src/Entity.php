@@ -10,5 +10,11 @@ abstract class Entity
     {
         $this->coordinates = $coordinates;
     }
+
+    public function getCoordinates(): Coordinates
+    {
+        return $this->coordinates;
+    }
+
     abstract public function __toString();
 }
