@@ -21,7 +21,8 @@ class Map
     private int $height;
     private array $entities;
 
-    public function setEntities(Coordinates $coordinates, Entity $entity): void
+
+    public function setEntity(Coordinates $coordinates, Entity $entity): void
     {
         $entity->setCoordinates($coordinates);
         $this->entities[(string)$coordinates] = $entity;
