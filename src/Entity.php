@@ -1,6 +1,7 @@
 <?php
 
 namespace Simulation;
+
 abstract class Entity
 {
     protected Coordinates $coordinates;
