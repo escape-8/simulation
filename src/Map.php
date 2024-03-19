@@ -39,6 +39,11 @@ class Map
         return $this->height;
     }
 
+    public function getCountEntitiesOnMapInPercent(): array
+    {
+        return self::COUNT_ENTITIES_ON_MAP_IN_PERCENT;
+    }
+
     public function setEntity(Coordinates $coordinates, Entity $entity): void
     {
         $entity->setCoordinates($coordinates);
