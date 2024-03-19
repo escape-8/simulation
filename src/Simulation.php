@@ -62,5 +62,4 @@ class Simulation
     {
         $this->countMovies++;
     }
-
 }
