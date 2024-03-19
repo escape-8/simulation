@@ -27,9 +27,10 @@ class Map
         $this->entities[(string)$coordinates] = $entity;
     }
 
-    public function setupStartPositions(): void
+    public function haveEntityOnPosition(Coordinates $coordinates): bool
     {
-        for ($row = 0; $row < self::$width; $row++) {
+        return array_key_exists((string)$coordinates, $this->entities);
+    }
 
             if ($row < 2) {
                 [$x, $y] = $this->generatePosition();
