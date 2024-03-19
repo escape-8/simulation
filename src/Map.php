@@ -37,16 +37,19 @@ class Map
         return array_filter($positions, fn($position) => $this->isPositionExists($position));
     }
 
-            if ($row < 11) {
-                [$x, $y] = $this->generatePosition();
-                $this->setEntities(new Coordinates($x, $y), new Grass());
-            }
-
-            if ($row < 10) {
-                [$x, $y] = $this->generatePosition();
-                $this->setEntities(new Coordinates($x, $y), new Herbivore(5, 5, new Coordinates($x, $y)));
-            }
+    public function isPositionExists(Coordinates $coordinates): bool
+    {
+        $x = $coordinates->getCoordX();
+        $y = $coordinates->getCoordY();
+        if ($x < self::MIN_COORDINATE || $x > $this->getWidth()) {
+            return false;
         }
+
+        if ($y < self::MIN_COORDINATE || $y > $this->getHeight()) {
+            return false;
+        }
+
+        return true;
     }
 
     public function generatePosition(): array
