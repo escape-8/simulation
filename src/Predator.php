@@ -2,7 +2,8 @@
 
 namespace Simulation;
 
-require_once __DIR__ . '/../src/Creature.php';
+use Simulation\PathFind\GraphOffsets;
+
 class Predator extends Creature
 {
     private int $attackPower = 5;
