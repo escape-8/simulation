@@ -6,9 +6,11 @@ use Simulation\PathFind\GraphOffsets;
 
 class Herbivore extends Creature
 {
-    public function makeMovie()
+    public function findFoodResource(Map $map): array
     {
-        // TODO: Implement makeMovie() method.
+        return $map->getEntitiesByClass(Grass::class);
+    }
+
     }
 
     public function __toString()
