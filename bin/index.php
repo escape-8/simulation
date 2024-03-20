@@ -1,3 +1,5 @@
+#! /usr/bin/env php
+
 <?php
 
 require_once __DIR__ . '/../src/ClassAutoload/autoload.php';
