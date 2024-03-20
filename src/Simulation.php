@@ -30,7 +30,7 @@ class Simulation
     public function startSimulation(): void
     {
         if ($this->getMovies() === 0) {
-            system('clear');
+            echo ConsoleMapRenderer::ANSI_CLEAR_TERMINAL_WINDOW;
             echo "\n";
             $initActions = new InitActions();
             $initActions->action($this->map);
@@ -40,7 +40,7 @@ class Simulation
         }
 
         while(count($this->map->getEntitiesByClass(Herbivore::class)) > 0) {
-            system('clear');
+            echo ConsoleMapRenderer::ANSI_CLEAR_TERMINAL_WINDOW;
             echo "\n";
             echo "Round: " . $this->getMovies() . "\n";
             $this->nextTurn();
