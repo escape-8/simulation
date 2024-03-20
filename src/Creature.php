@@ -9,6 +9,8 @@ abstract class Creature extends Entity
 {
     protected int $speed;
     protected int $healthPoints;
+    protected array $environmentEvaluations;
+    protected ?Coordinates $coordinatesForSimpleMove;
 
     public function __construct(int $speed, int $healthPoints, Coordinates $coordinates)
     {
