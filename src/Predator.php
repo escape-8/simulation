@@ -18,6 +18,18 @@ class Predator extends Creature
         return $map->getEntitiesByClass(Herbivore::class);
     }
 
+    public function locateMoveCoordinates(Map $map): ?Coordinates
+    {
+        $potentialMoves = $this->generateListPositionsFromCoordinates($map);
+        $moves = $this->generateListCoordinateMoves($potentialMoves, $map);
+        if (empty($moves)) {
+            return $this->getCoordinates();
+        }
+
+        $move = array_rand($moves);
+        return $moves[$move];
+    }
+
     }
 
     public function __toString()
