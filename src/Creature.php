@@ -24,6 +24,35 @@ abstract class Creature extends Entity
         $this->environmentEvaluations = $environmentEvaluations;
         $this->coordinatesForSimpleMove = null;
     }
+
+    public function getCoordinateForSimpleMove(): ?Coordinates
+    {
+        return $this->coordinatesForSimpleMove;
+    }
+
+    public function getSpeed(): int
+    {
+        return $this->speed;
+    }
+
+    public function getEnvironmentEvaluations(): array
+    {
+        return $this->environmentEvaluations;
+    }
+
+    public function getHealthPoints(): int
+    {
+        return $this->healthPoints;
+    }
+
+    public function setHealthPoints(int $healthPoints): void
+    {
+        $this->healthPoints = $healthPoints;
+    }
+
+    public function setCoordinateForSimpleMove(Coordinates $coordinates): void
+    {
+        $this->coordinatesForSimpleMove = $coordinates;
     }
 
     abstract public function makeMovie();
