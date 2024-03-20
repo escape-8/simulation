@@ -66,4 +66,12 @@ abstract class Creature extends Entity
 
         return $listOfMoves;
     }
+
+    abstract public function findFoodResource(Map $map): array;
+
+    abstract public function generateListPositionsFromCoordinates(Map $map): array;
+
+    abstract public function locateMoveCoordinates(Map $map): ?Coordinates;
+
+    abstract public function makeMovie(Map $map): Coordinates;
 }
