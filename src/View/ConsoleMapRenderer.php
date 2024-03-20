@@ -10,7 +10,7 @@ class ConsoleMapRenderer
     public const ANSI_CLEAR_TERMINAL_WINDOW = "\033[H\033[J";
     private const EMPTY_SYMBOL = "\u{0020}";
     private const BYTES_IN_UNICODE_SYMBOL = 2;
-    private const ANSI_BG_COLOR = "\u{001B}[0;100m";
+    private const ANSI_BG_COLOR = "\u{001B}[48;5;235m";
     private const ANSI_RESET_COLOR = "\u{001B}[0m";
 
     public function render(Map $map): void
