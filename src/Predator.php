@@ -13,10 +13,11 @@ class Predator extends Creature
         return $this->attackPower;
     }
 
-    public function makeAttack()
+    public function findFoodResource(Map $map): array
     {
-        // TODO: Implement makeAttack() method.
-        return false;
+        return $map->getEntitiesByClass(Herbivore::class);
+    }
+
     }
 
     public function __toString()
