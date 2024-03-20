@@ -56,6 +56,11 @@ class Herbivore extends Creature
         return $this->getCoordinates();
     }
 
+    public function eatGrass(Grass $grass): Coordinates
+    {
+        return $grass->getCoordinates();
+    }
+
     }
 
     public function __toString()
