@@ -61,6 +61,22 @@ class Herbivore extends Creature
         return $grass->getCoordinates();
     }
 
+    public function makeMovie(Map $map): Coordinates
+    {
+        $foodResource = $this->selectHerbivoreTarget($this->locateFoodResources($map), $map);
+        if (!$foodResource) {
+            $targetCoordinates = $this->locateMoveCoordinates($map);
+        } else {
+            $targetCoordinates = $foodResource->getCoordinates();
+            if ($this->getCoordinates()->isCoordinateNeighbor($targetCoordinates)) {
+                return $this->eatGrass($foodResource);
+            }
+        }
+        $graph = $map->toGraph($this->getEnvironmentEvaluations(), new GraphOffsets(GraphOffsets::HERBIVORE_GRAPH_OFFSET));
+
+        return $this->getStepCoordinate($map, $targetCoordinates, $graph);
+    }
+
     }
 
     public function __toString()
