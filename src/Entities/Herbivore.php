@@ -1,8 +1,12 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Entities;
 
+use Simulation\Coordinates\Coordinates;
+use Simulation\Coordinates\ShiftCoordinate;
+use Simulation\Map\Map;
 use Simulation\PathFind\GraphOffsets;
+use Simulation\Utility\Targets;
 
 class Herbivore extends Creature
 {

@@ -1,6 +1,7 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Entities;
+
 class Rock extends Entity
 {
     public function __toString()

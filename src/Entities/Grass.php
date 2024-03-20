@@ -1,6 +1,6 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Entities;
 class Grass extends Entity
 {
     public function __toString(): string

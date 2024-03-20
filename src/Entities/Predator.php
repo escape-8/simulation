@@ -1,8 +1,12 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Entities;
 
+use Simulation\Coordinates\ShiftCoordinate;
+use Simulation\Coordinates\Coordinates;
+use Simulation\Map\Map;
 use Simulation\PathFind\GraphOffsets;
+use Simulation\Utility\Targets;
 
 class Predator extends Creature
 {

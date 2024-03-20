@@ -1,6 +1,6 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Entities;
 
 class Tree extends Entity
 {

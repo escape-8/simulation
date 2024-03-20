@@ -2,8 +2,8 @@
 
 namespace Simulation\Actions;
 
-use Simulation\EntityFactory;
-use Simulation\Map;
+use Simulation\Entities\EntityFactory;
+use Simulation\Map\Map;
 use Simulation\PathFind\EnvironmentEvaluations;
 
 class InitActions extends Actions

@@ -2,10 +2,10 @@
 
 namespace Simulation\Actions;
 
-use Simulation\Creature;
-use Simulation\EntityFactory;
-use Simulation\Grass;
-use Simulation\Map;
+use Simulation\Entities\Creature;
+use Simulation\Entities\EntityFactory;
+use Simulation\Entities\Grass;
+use Simulation\Map\Map;
 use Simulation\PathFind\EnvironmentEvaluations;
 
 class TurnActions extends Actions

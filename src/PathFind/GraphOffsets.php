@@ -2,7 +2,7 @@
 
 namespace Simulation\PathFind;
 
-use Simulation\ShiftCoordinate;
+use Simulation\Coordinates\ShiftCoordinate;
 
 class GraphOffsets
 {

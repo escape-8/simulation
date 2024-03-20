@@ -2,7 +2,7 @@
 
 namespace Simulation\PathFind;
 
-use Simulation\Coordinates;
+use Simulation\Coordinates\Coordinates;
 
 class Node
 {

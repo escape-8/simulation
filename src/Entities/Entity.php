@@ -1,6 +1,8 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Entities;
+
+use Simulation\Coordinates\Coordinates;
 
 abstract class Entity
 {

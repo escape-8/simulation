@@ -1,9 +1,12 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Entities;
 
+use Simulation\Coordinates\Coordinates;
+use Simulation\Map\Map;
 use Simulation\PathFind\Graph;
 use Simulation\PathFind\PathFind;
+use Simulation\Utility\Targets;
 
 abstract class Creature extends Entity
 {

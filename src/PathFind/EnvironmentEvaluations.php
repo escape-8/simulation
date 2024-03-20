@@ -2,12 +2,12 @@
 
 namespace Simulation\PathFind;
 
-use Simulation\Coordinates;
-use Simulation\Grass;
-use Simulation\Herbivore;
-use Simulation\Predator;
-use Simulation\Rock;
-use Simulation\Tree;
+use Simulation\Coordinates\Coordinates;
+use Simulation\Entities\Grass;
+use Simulation\Entities\Herbivore;
+use Simulation\Entities\Predator;
+use Simulation\Entities\Rock;
+use Simulation\Entities\Tree;
 
 class EnvironmentEvaluations
 {

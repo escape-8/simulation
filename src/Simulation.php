@@ -4,6 +4,9 @@ namespace Simulation;
 
 use Simulation\Actions\InitActions;
 use Simulation\Actions\TurnActions;
+use Simulation\Entities\Herbivore;
+use Simulation\Map\Map;
+use Simulation\View\ConsoleMapRenderer;
 
 class Simulation
 {

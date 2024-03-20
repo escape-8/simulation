@@ -1,7 +1,14 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Map;
 
+use Simulation\Coordinates\Coordinates;
+use Simulation\Entities\Entity;
+use Simulation\Entities\Grass;
+use Simulation\Entities\Herbivore;
+use Simulation\Entities\Predator;
+use Simulation\Entities\Rock;
+use Simulation\Entities\Tree;
 use Simulation\PathFind\Graph;
 use Simulation\PathFind\GraphOffsets;
 use Simulation\PathFind\Node;

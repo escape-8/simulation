@@ -1,6 +1,9 @@
 <?php
 
-namespace Simulation;
+namespace Simulation\Utility;
+
+use Simulation\Coordinates\Coordinates;
+use Simulation\Map\Map;
 
 class Targets
 {

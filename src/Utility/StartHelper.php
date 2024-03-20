@@ -1,6 +1,6 @@
 <?php
 
-namespace Simulation\Helpers;
+namespace Simulation\Utility;
 
 class StartHelper
 {

@@ -2,10 +2,11 @@
 
 require_once __DIR__ . '/../src/ClassAutoload/autoload.php';
 
-use Simulation\Helpers\StartHelper;
+use Simulation\Utility\StartHelper;
 use Simulation\Simulation;
-use Simulation\ConsoleMapRenderer;
-use Simulation\Map;
+use Simulation\View\ConsoleMapRenderer;
+use Simulation\Map\Map;
+
 
 $start = new StartHelper();
 $width = $start->getWidth();

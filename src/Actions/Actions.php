@@ -2,8 +2,8 @@
 
 namespace Simulation\Actions;
 
-use Simulation\Coordinates;
-use Simulation\Map;
+use Simulation\Coordinates\Coordinates;
+use Simulation\Map\Map;
 
 abstract class Actions
 {
