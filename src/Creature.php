@@ -2,6 +2,9 @@
 
 namespace Simulation;
 
+use Simulation\PathFind\Graph;
+use Simulation\PathFind\PathFind;
+
 abstract class Creature extends Entity
 {
     protected int $speed;
