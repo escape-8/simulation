@@ -62,6 +62,24 @@ class Predator extends Creature
         $creature->setHealthPoints($healthAfterDamage);
     }
 
+    public function generateListPositionsFromCoordinates(Map $map): array
+    {
+        $listOfPositions = [];
+        for ($offset = 1, $maxOffset = $this->getSpeed(); $offset <= $maxOffset; $offset++) {
+            $offsets = [
+                $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(0, $offset)),
+                $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate($offset, $offset)),
+                $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate($offset, 0)),
+                $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate($offset, -$offset)),
+                $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(0, -$offset)),
+                $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(-$offset, -$offset)),
+                $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(-$offset, 0)),
+                $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(-$offset, $offset)),
+            ];
+            $listOfPositions = [...$listOfPositions, ...$offsets];
+        }
+
+        return $listOfPositions;
     }
 
     public function __toString()
