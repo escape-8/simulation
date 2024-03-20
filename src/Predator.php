@@ -39,6 +39,23 @@ class Predator extends Creature
         return $targets->calcDistanceBetweenTargets($this->getCoordinates())->setNearestTargetsFirst()->getTarget();
     }
 
+    public function makeMovie(Map $map): Coordinates
+    {
+        $foodResource = $this->selectPredatorTarget($this->locateFoodResources($map));
+        if (!$foodResource) {
+            $targetCoordinates = $this->locateMoveCoordinates($map);
+        } else {
+            $targetCoordinates = $foodResource->getCoordinates();
+            if ($this->getCoordinates()->isCoordinateNeighbor($targetCoordinates)) {
+                $this->makeAttack($foodResource);
+                return $this->getCoordinates();
+            }
+        }
+
+        $graph = $map->toGraph($this->environmentEvaluations, new GraphOffsets(GraphOffsets::PREDATOR_GRAPH_OFFSET));
+        return $this->getStepCoordinate($map, $targetCoordinates, $graph);
+    }
+
     }
 
     public function __toString()
