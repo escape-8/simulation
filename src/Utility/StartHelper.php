@@ -2,11 +2,13 @@
 
 namespace Simulation\Utility;
 
+use Simulation\View\ConsoleMapRenderer;
+
 class StartHelper
 {
     public function getWidth(): int
     {
-        system('clear');
+        echo ConsoleMapRenderer::ANSI_CLEAR_TERMINAL_WINDOW;
         echo "Set width (number from 3 to 30) \n";
         $width = readline();
 
@@ -21,7 +23,7 @@ class StartHelper
 
     public function getHeight(): int
     {
-        system('clear');
+        echo ConsoleMapRenderer::ANSI_CLEAR_TERMINAL_WINDOW;
         echo "Set height (number from 3 to 15) \n";
         $height = readline();
 
