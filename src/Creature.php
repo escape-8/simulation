@@ -55,5 +55,15 @@ abstract class Creature extends Entity
         $this->coordinatesForSimpleMove = $coordinates;
     }
 
-    abstract public function makeMovie();
+    public function generateListCoordinateMoves(array $listOfPositions, Map $map): array
+    {
+        $listOfMoves = [];
+        foreach ($listOfPositions as $position) {
+            if ($map->isPositionExists($position) && !$map->haveEntityOnPosition($position)) {
+                $listOfMoves[] = $position;
+            }
+        }
+
+        return $listOfMoves;
+    }
 }
