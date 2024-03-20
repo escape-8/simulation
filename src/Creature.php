@@ -67,6 +67,20 @@ abstract class Creature extends Entity
         return $listOfMoves;
     }
 
+    public function getStepCoordinate(Map $map, Coordinates $targetCoordinates, Graph $graph): Coordinates
+    {
+        $pathFind = new Pathfind($this->getCoordinates(), $targetCoordinates, $graph);
+        $path = $pathFind->findPath();
+        if ($path) {
+            $step = array_pop($path);
+            if ($map->haveEntityOnPosition($step)) {
+                return $this->getCoordinates();
+            }
+            return $step;
+        }
+        return $this->getCoordinates();
+    }
+
     public function locateFoodResources(Map $map): Targets
     {
         $foodResources = $this->findFoodResource($map);
