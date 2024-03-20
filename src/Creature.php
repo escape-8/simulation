@@ -67,6 +67,18 @@ abstract class Creature extends Entity
         return $listOfMoves;
     }
 
+    public function locateFoodResources(Map $map): Targets
+    {
+        $foodResources = $this->findFoodResource($map);
+
+        if (empty($foodResources)) {
+            return new Targets($map);
+        }
+
+        $foodTargets = new Targets($map, $foodResources);
+        return $foodTargets->calcDistanceBetweenTargets($this->getCoordinates())->setNearestTargetsFirst();
+    }
+
     abstract public function findFoodResource(Map $map): array;
 
     abstract public function generateListPositionsFromCoordinates(Map $map): array;
