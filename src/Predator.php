@@ -30,6 +30,15 @@ class Predator extends Creature
         return $moves[$move];
     }
 
+    public function selectPredatorTarget(Targets $targets): ?Creature
+    {
+        if (!$targets->haveTargets()) {
+            return null;
+        }
+
+        return $targets->calcDistanceBetweenTargets($this->getCoordinates())->setNearestTargetsFirst()->getTarget();
+    }
+
     }
 
     public function __toString()
