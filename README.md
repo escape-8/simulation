@@ -1,4 +1,4 @@
-# simulation
+# Simulation
 
 The essence of the project is a step-by-step simulation of a 2D world inhabited by eaters and predators. In addition to existence, the world contains resources (grass) that herbivores feed on and static objects that can be interacted with - they just take up space.
 
