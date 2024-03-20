@@ -77,6 +77,18 @@ class Herbivore extends Creature
         return $this->getStepCoordinate($map, $targetCoordinates, $graph);
     }
 
+    public function hasPredatorNearest(Map $map, Coordinates $coordinates): bool
+    {
+        $radius = $this->getSpeed() - 1  <= 0 ? 1 : $this->getSpeed() - 1;
+        $neighboursCoordinates = $map->filterNotExistsPositions($coordinates->calcNeighbors($radius));
+        foreach ($neighboursCoordinates as $neighbourCoordinate) {
+            if ($map->haveEntityOnPosition($neighbourCoordinate) && $map->getEntity($neighbourCoordinate) instanceof Predator) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function generateListPositionsFromCoordinates(Map $map): array
     {
         $listOfPositions = [];
