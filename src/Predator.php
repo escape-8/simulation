@@ -36,7 +36,7 @@ class Predator extends Creature
             return null;
         }
 
-        return $targets->calcDistanceBetweenTargets($this->getCoordinates())->setNearestTargetsFirst()->getTarget();
+        return $targets->getTarget();
     }
 
     public function makeMovie(Map $map): Coordinates
