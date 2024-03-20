@@ -1,2 +1,2 @@
 simulation:
-	php public/index.php
+	./bin/simulation
