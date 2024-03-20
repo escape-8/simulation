@@ -35,3 +35,7 @@ The goal of the project is to develop object-oriented programming skills, as wel
 > $ cd path/to/simulation
 
 > $ C:\xampp\php\php.exe bin/simulation
+
+> Set width and height of map
+
+> view simulation in terminal
