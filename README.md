@@ -1,6 +1,10 @@
 # Simulation
 
-The essence of the project is a step-by-step simulation of a 2D world inhabited by eaters and predators. In addition to existence, the world contains resources (grass) that herbivores feed on and static objects that can be interacted with - they just take up space.
+![simulation preview](https://live.staticflickr.com/65535/53600087601_a82bc221a6_b.jpg)
+
+The essence of the project is a step-by-step simulation of a 2D world inhabited by herbivores and predators. In addition to existence, the world contains resources (grass) that herbivores feed on and static objects that can be interacted with - they just take up space.
+
+This project is a cat-and-mouse adaptation. And the food resource is cheese.
 
 The 2D world is an NxM matrix, each creature or object contains cells of a cell, the presence of several objects/creatures in a cell is unacceptable.
 
