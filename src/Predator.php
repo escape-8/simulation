@@ -8,10 +8,9 @@ class Predator extends Creature
 {
     private int $attackPower = 5;
 
-    public function makeMovie()
+    public function getAttackPower(): int
     {
-        // TODO: Implement makeMovie() method.
-        return false;
+        return $this->attackPower;
     }
 
     public function makeAttack()
