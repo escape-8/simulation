@@ -56,6 +56,12 @@ class Predator extends Creature
         return $this->getStepCoordinate($map, $targetCoordinates, $graph);
     }
 
+    public function makeAttack(Creature $creature): void
+    {
+        $healthAfterDamage = $creature->getHealthPoints() - $this->getAttackPower();
+        $creature->setHealthPoints($healthAfterDamage);
+    }
+
     }
 
     public function __toString()
