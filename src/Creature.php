@@ -12,11 +12,18 @@ abstract class Creature extends Entity
     protected array $environmentEvaluations;
     protected ?Coordinates $coordinatesForSimpleMove;
 
-    public function __construct(int $speed, int $healthPoints, Coordinates $coordinates)
-    {
+    public function __construct(
+        int $speed,
+        int $healthPoints,
+        Coordinates $coordinates,
+        array $environmentEvaluations,
+    ) {
         $this->speed = $speed;
         $this->healthPoints = $healthPoints;
         $this->coordinates = $coordinates;
+        $this->environmentEvaluations = $environmentEvaluations;
+        $this->coordinatesForSimpleMove = null;
+    }
     }
 
     abstract public function makeMovie();
