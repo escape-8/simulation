@@ -77,6 +77,33 @@ class Herbivore extends Creature
         return $this->getStepCoordinate($map, $targetCoordinates, $graph);
     }
 
+    public function generateListPositionsFromCoordinates(Map $map): array
+    {
+        $listOfPositions = [];
+        for ($offset = 1, $maxOffset = $this->getSpeed(); $offset <= $maxOffset; $offset++) {
+            if ($offset > 1) {
+                $offsets = [
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(0, $offset)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate($offset - 1, $offset - 1)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate($offset, 0)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate($offset - 1, -$offset + 1)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(0, -$offset)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(-$offset + 1, -$offset + 1)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(-$offset, 0)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(-$offset + 1, $offset - 1)),
+                ];
+            } else {
+                $offsets = [
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(0, $offset)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate($offset, 0)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(0, -$offset)),
+                    $this->getCoordinates()->shiftCoordinates(new ShiftCoordinate(-$offset, 0)),
+                ];
+            }
+            $listOfPositions = [...$listOfPositions, ...$offsets];
+        }
+
+        return array_unique($listOfPositions);
     }
 
     public function __toString()
