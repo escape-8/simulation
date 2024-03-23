@@ -28,7 +28,7 @@ class EnvironmentEvaluations
 
     public function mergeEvaluations(array $base, array $additional): array
     {
-        return [...$base, ...$additional];
+        return $base + $additional;
     }
     public function getPredatorEvaluations(): array
     {
