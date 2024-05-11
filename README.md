@@ -1,6 +1,5 @@
 # Simulation
 
-![simulation preview](https://live.staticflickr.com/65535/53600087601_a82bc221a6_b.jpg)
 
 The essence of the project is a step-by-step simulation of a 2D world inhabited by herbivores and predators. In addition to existence, the world contains resources (grass) that herbivores feed on and static objects that can be interacted with - they just take up space.
 
